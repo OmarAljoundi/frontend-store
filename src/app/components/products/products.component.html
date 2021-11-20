@@ -1,0 +1,6 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <mat-card class="singleProduct" *ngFor="let p of products">
+        <app-product-item [product]="p"></app-product-item>
+    </mat-card>
+</div>

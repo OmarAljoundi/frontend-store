@@ -1,0 +1,23 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="postUser()">
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" name="firstName" class="form-control" placeholder="Enter Your First Name Here" required
+                minlength="3" maxlength="10" [(ngModel)]="firstName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="text" name="lastName" class="form-control" placeholder="Enter Your Last Name Here" required
+                minlength="4" maxlength="10" [(ngModel)]="lastName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                placeholder="Password" required minlength="5" maxlength="10" [(ngModel)]="password">
+        </div>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary add">Sign Up</button>
+        <div>
+            <a [routerLink]="['/signin']">Already have an account? Signin here.</a>
+        </div>
+    </form>
+</div>

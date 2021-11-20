@@ -1,0 +1,27 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="list-container">
+        <div *ngFor="let item of order">
+            <div class="item-info">
+                <img src="{{ item.imageurl }}">
+                <ul>
+                    <li>
+                        Name : {{ item.name }}
+                    </li>
+                    <li>
+                       Price: ${{ item.price }}
+                    </li>
+                    <li>
+                        Quantity: {{ item.quantity }}
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+       
+    </div>
+    <div class="price">
+        <h1>Total price: ${{ totalCart }}</h1>
+    </div>
+    
+</div>

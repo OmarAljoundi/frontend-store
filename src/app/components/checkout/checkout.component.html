@@ -1,0 +1,83 @@
+<app-nav-bar></app-nav-bar>
+<div *ngIf="cartList.length !== 0; else emptyCart" class="container">
+    <div class="list-container">
+        <div *ngFor="let item of cartList">
+            <div class="item-info">
+                <img src="{{ item.product.imageurl }}">
+                <ul>
+                    <li>
+                        {{ item.product.name }}
+                    </li>
+                    <li>
+                        ${{ item.product.price }}
+                    </li>
+                    <li>
+                        <input type="number" name="quantity" min="1" max="10" value="{{ item.quantity }}" (change)="modifiyCart(item.product,$event)">
+                    </li>
+                    <li>
+                        <div>
+                            <a (click)="removeItem(item)" class="btn btn-danger">
+                               Remove
+                            </a>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <h3>Total price: ${{ totalCart }}</h3>
+    </div>
+
+    <!-- items -->
+    <div class="form">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="(Minimum 3 characters)" required [disabled]="autoFill === true ? true : false" [(ngModel)]="firstName" name="firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="(Minimum 3 characters)" required
+                    [value]="lastName" [disabled]="autoFill === true ? true : false" [(ngModel)]="lastName" name="lastName">
+            </div>
+            <div class="form-group">
+                <label for="Address">Address</label>
+                <input type="text" class="form-control" id="Address" placeholder="(Minimum 6 characters)" name="address" required minlength="6" [(ngModel)]="address">
+            </div>
+            <div class="form-group">
+                <label for="card">Credit Card Number</label>
+                <input type="text" class="form-control" id="card" placeholder="(16-digits Numbers)" name="card" required minlength="16" maxlength="16" [(ngModel)]="card">
+            </div>
+            <div *ngIf = "autoFill === false ? true : false" class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="(Minimum 6 characters)" name="password" required
+                    minlength="6" [(ngModel)]="password">
+            </div>
+            
+            <small>We will never share your payment with anyone else. Promise ( ; </small>
+            <div>
+                <button type="submit" class="btn btn-primary add" [disabled]="form.invalid">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<ng-template #emptyCart>
+    <div class="container-fluid mt-100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body cart">
+                        <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png"
+                                width="130" height="130" class="img-fluid mb-4 mr-3">
+                            <h3><strong>Your Cart is Empty</strong></h3>
+                            <h4>Add something to make me happy :)</h4> <a routerLink='/'
+                                class="btn btn-primary cart-btn-transform m-3" data-abc="true">Back To Store</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

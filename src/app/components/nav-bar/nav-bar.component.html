@@ -1,0 +1,24 @@
+<div class="nav-div">
+<p class="coolText" data-item="Omar's E-Store">Omar's E-Store</p>
+</div>
+
+<nav>
+    <ul class="menuItems">
+        <div class="menuStyle">
+            <li><a routerLink="/" data-item='Home'>Home</a></li>
+            <li><a routerLink="/checkout" data-item='Cart'>Cart</a></li>
+            <li *ngIf="token === 'No Account Found'"><a routerLink="/signup" data-item='SignUp'>SignUp</a></li>
+            <li *ngIf="token === 'No Account Found'"><a routerLink="/signin" data-item='SignIn'>SignIn</a></li>
+            <li *ngIf="token !== 'No Account Found'" style="padding: 0 105px 0 25px;"><button class="cate" mat-button [matMenuTriggerFor]="belowMenu"><img src="https://img.icons8.com/doodle/48/000000/user-male-circle.png" /> {{ userName}} </button>
+                <mat-menu #belowMenu="matMenu" yPosition="below">
+                    <button mat-menu-item [routerLink]="['/orders_completed']" routerLinkActive="router-link-active">Completed Orders</button>
+                    <button mat-menu-item (click)="logout();" routerLink="/" data-item='Logout'>Logout</button>
+                </mat-menu>
+            </li>
+            
+            
+        </div>
+    </ul>
+</nav> 
+
+

@@ -1,0 +1,11 @@
+<mat-card class="example-card">
+    <a [routerLink]="['/product-details', product?.id]">
+        <img class="productImage" mat-card-image src="{{ product?.imageurl }}" alt="Photo of a Shiba Inu">
+    </a>
+    <div class="textCenter">
+        <h4>{{ product?.name }}</h4>
+        <h4>Category: {{ product?.category }}</h4>
+        <h5>Price: ${{ product?.price }}</h5>
+    </div>
+    <app-cart class="center" [product]="product"></app-cart>
+</mat-card>

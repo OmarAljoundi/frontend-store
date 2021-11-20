@@ -1,0 +1,64 @@
+@import "~font-awesome/scss/font-awesome.scss";
+.cate {
+  border: none;
+  background-color: #424242;
+}
+.nav-div {
+  margin-top: 50px;
+}
+.coolText {
+  margin: 16px;
+  font-size: 52px;
+  color: #ccc;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.5s;
+    color: red;
+  }
+}
+.menuStyle {
+  display: flex;
+}
+
+nav {
+  background: #424242;
+  padding: 5px;
+  .menuItems {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    margin: 0;
+
+    li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 0 60px 0 60px;
+      line-height: 3;
+      color: white;
+      a,
+      .cate {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 400;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        color: white;
+
+        &:hover {
+          transition: 0.5s;
+          color: red;
+        }
+      }
+    }
+  }
+}

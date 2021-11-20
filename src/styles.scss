@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+.container {
+  max-width: 1100px;
+  margin: 50px auto;
+}
+.add {
+  margin-top: 15px;
+}
+
+.productImage {
+  width: 300px;
+  height: 450px;
+}
+.center {
+  .cart {
+    text-align: center;
+  }
+}
+.left {
+  .cart {
+    text-align: left;
+  }
+}
+.textCenter {
+  text-align: center;
+}
+li {
+  margin-top: 15px;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,16 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="mat-card mat-focus-indicator singleProduct ng-star-inserted">
+        <img class="imageSingle" src="{{ product?.imageurl }}">
+    </div>
+    <div class="item-info">
+        <h3>{{ product?.name }}</h3>
+        <h5>${{ product?.price }} </h5>
+        <h5>{{ product?.description }} </h5>
+        <app-cart class="left" [product]="product"></app-cart>
+        <div class="add">
+            <a [routerLink]="['/']">Back to Product List</a>
+        </div>
+    </div>
+</div>
+

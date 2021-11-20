@@ -1,0 +1,18 @@
+.imageSingle {
+  width: 300px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  display: flex;
+  align-content: flex-end;
+  justify-content: space-around;
+  align-items: center;
+}
+.center {
+  text-align: left;
+}
+.imageSingle {
+  padding: 10px;
+}
