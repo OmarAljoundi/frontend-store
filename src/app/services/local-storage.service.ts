@@ -35,6 +35,7 @@ helper = new JwtHelperService();
 
     addToCartList(product:Product,quantity:number){
     const modifiy = this.modifiyFromCartList(product,quantity)
+      console.log(modifiy)
       if(modifiy === 0){
         this.cartList.push({
         product:product,
@@ -71,5 +72,6 @@ helper = new JwtHelperService();
       this.remove("userCart")
       const jsonData = JSON.stringify(cartList2)
       this.set("userCart",jsonData)
+      this.cartList = cartList2
     }
 }
