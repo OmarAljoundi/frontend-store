@@ -16,7 +16,7 @@ export class UserOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.cartServices.completedOrders().subscribe(res=>{
       this.dataSource = res!
-      console.log(res)
+      
     })
   }
 

@@ -6,6 +6,13 @@
         <h4>{{ product?.name }}</h4>
         <h4>Category: {{ product?.category }}</h4>
         <h5>Price: ${{ product?.price }}</h5>
+        <div class="cart">
+            <input type="number" name="quantity" min="1" max="10" value="1" [ngModel]="quantity"
+                (ngModelChange)="quantity=$event">
+        </div>
+        <button class="btn btn-danger add" (click)="addToCart();">Add To Cart</button>
     </div>
-    <app-cart class="center" [product]="product"></app-cart>
+    
+        
+    <!-- <app-cart class="center" [product]="product"></app-cart> -->
 </mat-card>

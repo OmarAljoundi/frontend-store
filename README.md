@@ -8,6 +8,10 @@
 
 ## StoreFront
 
+### About this project
+
+A frontend shopping website using Angular and SCSS for styling, by which it has all the necessary pages for any online shopping website, such as checking out all the products details, adding items of your choice to the cart, then when you finish shopping you can review your order quantities and bill total. Also later on you can check all the previous orders you had. providing the best UX/UI experience.
+
 ### Dependencies
 
 - Run npm install or yarn add to install all the dependances

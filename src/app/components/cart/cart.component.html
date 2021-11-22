@@ -1,6 +1,33 @@
-<div class="cart">
-    <div>
-        <input type="number" name="quantity" min="1" max="10" value="1" [(ngModel)]="quantity">
+
+
+<div class="list-container">
+    <div *ngFor="let item of cart">
+        <div class="item-info">
+            <img src="{{ item.product.imageurl }}">
+            <ul>
+                <li>
+                    {{ item.product.name }}
+                </li>
+                <li>
+                    ${{ item.product.price }}
+                </li>
+                <li>
+                    <div class="quantity">
+                        <input  type="number" name="quantity" min="1" max="10" value="{{ item.quantity }}"
+                            [ngModel]="item.quantity" (ngModelChange)="modifiyCart(item.product,$event)">
+                    </div>
+                   
+                </li>
+                <li>
+                    <div>
+                        <a (click)="removeItem(item)" class="btn btn-danger">
+                            Remove
+                        </a>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
     </div>
-    <button class="btn btn-danger add" (click)="addToCart();">Add To Cart</button>
+
 </div>

@@ -7,7 +7,11 @@
         <h3>{{ product?.name }}</h3>
         <h5>${{ product?.price }} </h5>
         <h5>{{ product?.description }} </h5>
-        <app-cart class="left" [product]="product"></app-cart>
+        <div class="cart left">
+            <input type="number" name="quantity" min="1" max="10" value="1" [ngModel]="quantity"
+                (ngModelChange)="quantity=$event">
+        </div>
+        <button class="btn btn-danger add" (click)="addToCart();">Add To Cart</button>
         <div class="add">
             <a [routerLink]="['/']">Back to Product List</a>
         </div>

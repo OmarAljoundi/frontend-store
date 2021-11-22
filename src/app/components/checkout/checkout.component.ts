@@ -16,17 +16,17 @@ import { UsersService } from 'src/app/services/users.service';
 export class CheckoutComponent implements OnInit {
   cartList:Cart[] = []
   password?:string
-  totalCart:number = 0
   firstName?:string
   lastName?:string 
   autoFill?:boolean
   @Input() card?:string
   @Input() address?:string
+  removedProduct:any
+  receivedTotal?:number
   constructor(private localStorages:LocalStorageService,private cartServices:CartService,private router:Router,private userServices:UsersService) { }
 
   ngOnInit(): void {
    const user = this.localStorages.decodeToken()
-   this.totalCart = this.calculateTotal()
    if(user !== "No Account Found"){
     this.firstName = user.first_name
     this.lastName = user.last_name
@@ -38,7 +38,7 @@ export class CheckoutComponent implements OnInit {
       this.autoFill = false
    }
   }
-  
+
  
     async onSubmit():Promise<void> {
     if(this.autoFill){
@@ -50,25 +50,15 @@ export class CheckoutComponent implements OnInit {
       }
 }
 
-  modifiyCart(product:Product,event:Event): void {
-    const value = Number((event.target as HTMLInputElement).value)
-    this.localStorages.modifiyFromCartList(product,value)
-    this.totalCart = this.calculateTotal()
+  
+  setVal(total:number){
+    this.receivedTotal=total
+   
   }
-  calculateTotal():number{
-    let total = 0
-    this.cartList = this.localStorages.getCartList()
-      this.cartList.forEach(element => {
-          total = total + (element.product.price * element.quantity)
-    });
-    return total
+  setCart(cart:Cart[]){
+    this.cartList = cart
   }
-  removeItem(cart:Cart):void{
-    this.localStorages.removeItemFromCartList(cart)
-    this.cartList = this.localStorages.getCartList()
-    this.totalCart = this.calculateTotal()
-    alert(`Item ${cart.product.name} Has Been Deleted`)
-  }
+  
   
   async authorizedUser():Promise<void>{
     const user = {
@@ -99,7 +89,6 @@ export class CheckoutComponent implements OnInit {
       this.cartServices.setCart(value.product.id!,value.quantity).subscribe
       (response => {
           return new Promise(() => {
-              console.log(response)
               resolve()
           })
         })
@@ -107,13 +96,13 @@ export class CheckoutComponent implements OnInit {
   })
 )
 .then(() => {
-   this.cartServices.updateCartStatus(this.totalCart).subscribe(res=>{
-     console.log(res)
+   this.cartServices.updateCartStatus(this.receivedTotal!).subscribe(res=>{
      this.localStorages.remove("userCart")
-     this.router.navigate(['/checkout/success'],{queryParams:{fullName:this.firstName + ' ' + this.lastName,price:this.totalCart},queryParamsHandling:'merge'})
+     this.router.navigate(['/checkout/success'],{queryParams:{fullName:this.firstName + ' ' + this.lastName,price:this.receivedTotal},queryParamsHandling:'merge'})
   })
 
   })
   
 
-}}
+}
+}
